@@ -5,6 +5,9 @@
     'use strict';
 
     $(document).ready(function() {
+        var $rulesList = $('#ucc-rules-list');
+        var $template  = $('#ucc-rule-template').html();
+
         // Initialize Sortable
         $rulesList.sortable({
             handle: '.ucc-col-drag',

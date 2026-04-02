@@ -72,4 +72,4 @@ function ucc_deactivate()
 }
 
 // Start the plugin
-ucc_run_plugin();
+add_action('plugins_loaded', 'ucc_run_plugin');
