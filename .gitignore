@@ -1,0 +1,11 @@
+.DS_Store
+*.zip
+.git/
+.github/
+# WordPress specific
+wp-config.php
+wp-content/uploads/
+wp-content/blogs.dir/
+wp-content/upgrade/
+wp-content/backup-db/
+*.log
