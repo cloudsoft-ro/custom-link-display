@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: URL Conditional Content
+ * Plugin Name: Custom Link Display
  * Plugin URI:  https://www.onu.ro/
  * Description: Display custom HTML snippets conditionally based on specific URLs and query parameters.
  * Version:     1.0.0
@@ -8,7 +8,7 @@
  * Author URI:  https://onu.ro
  * License:     GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: url-conditional-content
+ * Text Domain: custom-link-display
  * Domain Path: /languages
  *
  * @package URLConditionalContent

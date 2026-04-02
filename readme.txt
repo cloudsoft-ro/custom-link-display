@@ -1,4 +1,4 @@
-=== URL Conditional Content ===
+=== Custom Link Display ===
 Contributors: constantinonu
 Tags: html injector, url parameters, tracking code, header footer, conditional content
 Requires at least: 5.0
