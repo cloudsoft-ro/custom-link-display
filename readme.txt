@@ -45,5 +45,14 @@ Yes! We support Exact Match, "Contains" logic, and **Full Perl-Compatible Regula
 
 == Changelog ==
 
+= 1.1.0 =
+* Renamed plugin to Custom Link Display.
+* Added Regex matching support.
+* Added [ucc_content] shortcode system.
+* Added Drag & Drop rule reordering for priority control.
+* Fixed fatal error on activation.
+* Added one-click copy to clipboard for shortcodes.
+* Enhanced admin UI and updated plugin headers.
+
 = 1.0.0 =
-* Initial release as URL Conditional Content.
+* Initial release.
