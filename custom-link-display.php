@@ -3,15 +3,18 @@
  * Plugin Name: Custom Link Display
  * Plugin URI:  https://www.onu.ro/
  * Description: Display custom HTML snippets conditionally based on specific URLs and query parameters.
- * Version:     1.0.0
+ * Version:     1.1.0
  * Author:      Constantin Onu
  * Author URI:  https://onu.ro
  * License:     GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: custom-link-display
  * Domain Path: /languages
+ * Requires at least: 5.0
+ * Tested up to: 6.5
+ * Requires PHP: 7.4
  *
- * @package URLConditionalContent
+ * @package CustomLinkDisplay
  */
 
 // If this file is called directly, abort.
@@ -22,7 +25,7 @@ if (!defined('WPINC')) {
 /**
  * Currently plugin version.
  */
-define('UCC_VERSION', '1.0.0');
+define('UCC_VERSION', '1.1.0');
 
 /**
  * Path to the plugin directory.
