@@ -2,14 +2,14 @@
 /**
  * The core plugin class.
  *
- * @package URLConditionalContent
+ * @package CustomLinkDisplay
  */
 
 if (!defined('ABSPATH')) {
     exit;
 }
 
-class UCC_Main
+class CLD_Main
 {
 
     protected $plugin_name;
@@ -17,8 +17,8 @@ class UCC_Main
 
     public function __construct()
     {
-        $this->plugin_name = 'url-conditional-content';
-        $this->version = UCC_VERSION;
+        $this->plugin_name = 'custom-link-display';
+        $this->version = CLD_VERSION;
 
         $this->load_dependencies();
         $this->set_locale();
@@ -26,8 +26,8 @@ class UCC_Main
 
     private function load_dependencies()
     {
-        require_once UCC_PATH . 'includes/class-ucc-admin.php';
-        require_once UCC_PATH . 'includes/class-ucc-frontend.php';
+        require_once CLD_PATH . 'includes/class-cld-admin.php';
+        require_once CLD_PATH . 'includes/class-cld-frontend.php';
     }
 
     private function set_locale()
@@ -37,8 +37,8 @@ class UCC_Main
 
     public function run()
     {
-        $admin = new UCC_Admin();
-        $frontend = new UCC_Frontend();
+        $admin = new CLD_Admin();
+        $frontend = new CLD_Frontend();
 
         // Add Admin Hooks
         add_action('admin_menu', [$admin, 'add_plugin_admin_menu']);

@@ -9,39 +9,39 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class UCC_Admin
+class CLD_Admin
 {
 
     public function enqueue_styles($hook)
     {
-        if ('toplevel_page_ucc-settings' !== $hook) {
+        if ('toplevel_page_cld-settings' !== $hook) {
             return;
         }
 
-        wp_enqueue_style('ucc-admin-css', UCC_URL . 'assets/admin-style.css', [], UCC_VERSION, 'all');
+        wp_enqueue_style('cld-admin-css', CLD_URL . 'assets/admin-style.css', [], CLD_VERSION, 'all');
     }
 
     public function enqueue_scripts($hook)
     {
-        if ('toplevel_page_ucc-settings' !== $hook) {
+        if ('toplevel_page_cld-settings' !== $hook) {
             return;
         }
 
-        wp_enqueue_script('ucc-admin-js', UCC_URL . 'assets/admin-script.js', ['jquery', 'jquery-ui-sortable'], UCC_VERSION, true);
+        wp_enqueue_script('cld-admin-js', CLD_URL . 'assets/admin-script.js', ['jquery', 'jquery-ui-sortable'], CLD_VERSION, true);
 
-        wp_localize_script('ucc-admin-js', 'uccData', [
+        wp_localize_script('cld-admin-js', 'cldData', [
             'ajaxUrl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('ucc_admin_nonce'),
+            'nonce' => wp_create_nonce('cld_admin_nonce'),
         ]);
     }
 
     public function add_plugin_admin_menu()
     {
         add_menu_page(
-            __('URL Conditional Content', 'url-conditional-content'),
-            __('URL Content', 'url-conditional-content'),
+            __('Custom Link Display', 'custom-link-display'),
+            __('URL Content', 'custom-link-display'),
             'manage_options',
-            'ucc-settings',
+            'cld-settings',
         [$this, 'display_settings_page'],
             'dashicons-external',
             100
@@ -50,7 +50,7 @@ class UCC_Admin
 
     public function register_settings()
     {
-        if (isset($_POST['ucc_save_rules'])) {
+        if (isset($_POST['cld_save_rules'])) {
             $this->save_rules();
         }
     }
@@ -60,7 +60,7 @@ class UCC_Admin
      */
     private function save_rules()
     {
-        if (!isset($_POST['ucc_save_rules_nonce']) || !wp_verify_nonce(sanitize_key($_POST['ucc_save_rules_nonce']), 'ucc_save_rules_action')) {
+        if (!isset($_POST['cld_save_rules_nonce']) || !wp_verify_nonce(sanitize_key($_POST['cld_save_rules_nonce']), 'cld_save_rules_action')) {
             return;
         }
 
@@ -86,7 +86,7 @@ class UCC_Admin
                 }
 
                 $sanitized_rules[] = [
-                    'id'          => !empty($rule['id']) ? sanitize_text_field($rule['id']) : uniqid('ucc_'),
+                    'id'          => !empty($rule['id']) ? sanitize_text_field($rule['id']) : uniqid('cld_'),
                     'url'         => $match_type === 'regex' ? $url : esc_url_raw($url),
                     'match_type'  => $match_type,
                     'location'    => sanitize_text_field($rule['location']),
@@ -97,14 +97,14 @@ class UCC_Admin
             }
         }
 
-        update_option('ucc_rules', $sanitized_rules);
+        update_option('cld_rules', $sanitized_rules);
 
-        add_settings_error('ucc_messages', 'ucc_message', __('Settings Saved', 'url-conditional-content'), 'updated');
+        add_settings_error('cld_messages', 'cld_message', __('Settings Saved', 'custom-link-display'), 'updated');
     }
 
     public function display_settings_page()
     {
-        $rules = get_option('ucc_rules', []);
-        require_once UCC_PATH . 'templates/admin-page.php';
+        $rules = get_option('cld_rules', []);
+        require_once CLD_PATH . 'templates/admin-page.php';
     }
 }

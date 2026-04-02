@@ -2,7 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.1.0] - 2026-04-02
+## [1.2.0] - 2026-04-02
+### Changed
+- **Major Refactor**: Renamed all internal namespaces, constants, and classes to `CLD` (Custom Link Display) for better consistency and conflict prevention.
+- **Data Schema**: Migrated options from `ucc_rules` to `cld_rules` (automatic on save).
+- **Internationalization**: Standardized text domains to `custom-link-display`.
+- **Admin UI**: Refined design tokens and modernized CSS for a more premium look.
+- **Shortcode**: Added `[cld_content]` shortcode support.
+
+## [1.1.1] - 2026-04-02
 ### Added
 - **Regex Match**: Added "Regex Match" option for URL patterns.
 - **Shortcode System**: New `[ucc_content id="..."]` shortcode for manual content placement.

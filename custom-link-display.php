@@ -25,51 +25,51 @@ if (!defined('WPINC')) {
 /**
  * Currently plugin version.
  */
-define('UCC_VERSION', '1.1.0');
+define('CLD_VERSION', '1.2.0');
 
 /**
  * Path to the plugin directory.
  */
-define('UCC_PATH', plugin_dir_path(__FILE__));
+define('CLD_PATH', plugin_dir_path(__FILE__));
 
 /**
  * URL to the plugin directory.
  */
-define('UCC_URL', plugin_dir_url(__FILE__));
+define('CLD_URL', plugin_dir_url(__FILE__));
 
 /**
  * The core plugin class.
  */
-require_once UCC_PATH . 'includes/class-ucc-main.php';
+require_once CLD_PATH . 'includes/class-cld-main.php';
 
 /**
  * Begins execution of the plugin.
  */
-function ucc_run_plugin()
+function cld_run_plugin()
 {
-	$plugin = new UCC_Main();
+	$plugin = new CLD_Main();
 	$plugin->run();
 }
 
 /**
  * Activation Hook
  */
-register_activation_hook(__FILE__, 'ucc_activate');
-function ucc_activate()
+register_activation_hook(__FILE__, 'cld_activate');
+function cld_activate()
 {
-	if (!get_option('ucc_rules')) {
-		update_option('ucc_rules', []);
+	if (!get_option('cld_rules')) {
+		update_option('cld_rules', []);
 	}
 }
 
 /**
  * Deactivation Hook
  */
-register_deactivation_hook(__FILE__, 'ucc_deactivate');
-function ucc_deactivate()
+register_deactivation_hook(__FILE__, 'cld_deactivate');
+function cld_deactivate()
 {
 // Cleanup if necessary
 }
 
 // Start the plugin
-add_action('plugins_loaded', 'ucc_run_plugin');
+add_action('plugins_loaded', 'cld_run_plugin');

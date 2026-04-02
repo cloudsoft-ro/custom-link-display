@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class UCC_Frontend
+class CLD_Frontend
 {
 
     private $active_rules = [];
@@ -17,6 +17,8 @@ class UCC_Frontend
     public function __construct()
     {
         add_action('template_redirect', [$this, 'detect_matching_rules']);
+        add_shortcode('cld_content', [$this, 'render_shortcode']);
+        // Keep old shortcode for compatibility if needed, but the user asked for a new release.
         add_shortcode('ucc_content', [$this, 'render_shortcode']);
     }
 
@@ -26,7 +28,7 @@ class UCC_Frontend
             return;
         }
 
-        $rules = get_option('ucc_rules', []);
+        $rules = get_option('cld_rules', []);
         if (empty($rules)) {
             return;
         }
@@ -133,19 +135,19 @@ class UCC_Frontend
     }
 
     /**
-     * Handle the [ucc_content id="..."] shortcode.
+     * Handle the [cld_content id="..."] shortcode.
      */
     public function render_shortcode($atts)
     {
         $atts = shortcode_atts([
             'id' => '',
-        ], $atts, 'ucc_content');
+        ], $atts, 'cld_content');
 
         if (empty($atts['id'])) {
             return '';
         }
 
-        $rules = get_option('ucc_rules', []);
+        $rules = get_option('cld_rules', []);
         foreach ($rules as $rule) {
             if ($rule['id'] === $atts['id'] && !empty($rule['active'])) {
                 // Check expiration

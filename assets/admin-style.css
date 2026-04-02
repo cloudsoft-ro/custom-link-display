@@ -1,143 +1,144 @@
 /**
- * Admin Styling for URL Conditional Content
+ * Admin Styling for Custom Link Display
  */
 
 :root {
-    --ucc-primary: #3b82f6;
-    --ucc-primary-hover: #2563eb;
-    --ucc-bg: #f8fafc;
-    --ucc-card: #ffffff;
-    --ucc-text: #1e293b;
-    --ucc-text-muted: #64748b;
-    --ucc-border: #e2e8f0;
-    --ucc-radius: 12px;
-    --ucc-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --cld-primary: #3b82f6;
+    --cld-primary-hover: #2563eb;
+    --cld-bg: #f8fafc;
+    --cld-card: #ffffff;
+    --cld-text: #1e293b;
+    --cld-text-muted: #64748b;
+    --cld-border: #e2e8f0;
+    --cld-radius: 12px;
+    --cld-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
-.ucc-admin-wrap {
+.cld-admin-wrap {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: var(--ucc-text);
+    color: var(--cld-text);
     max-width: 1200px;
     margin: 30px auto;
     padding-right: 20px;
 }
 
-.ucc-header {
+.cld-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
-    background: var(--ucc-card);
+    background: var(--cld-card);
     padding: 24px 30px;
-    border-radius: var(--ucc-radius);
-    box-shadow: var(--ucc-shadow);
-    border: 1px solid var(--ucc-border);
+    border-radius: var(--cld-radius);
+    box-shadow: var(--cld-shadow);
+    border: 1px solid var(--cld-border);
 }
 
-.ucc-header h1 {
+.cld-header h1 {
     margin: 0;
     font-size: 24px;
     font-weight: 700;
-    color: var(--ucc-text);
+    color: var(--cld-text);
 }
 
-.ucc-header p {
+.cld-header p {
     margin: 4px 0 0;
-    color: var(--ucc-text-muted);
+    color: var(--cld-text-muted);
 }
 
-.ucc-rules-container {
-    background: var(--ucc-card);
-    border-radius: var(--ucc-radius);
-    box-shadow: var(--ucc-shadow);
-    border: 1px solid var(--ucc-border);
+.cld-rules-container {
+    background: var(--cld-card);
+    border-radius: var(--cld-radius);
+    box-shadow: var(--cld-shadow);
+    border: 1px solid var(--cld-border);
     overflow: hidden;
     margin-bottom: 30px;
 }
 
-.ucc-rules-header {
+.cld-rules-header {
     display: flex;
     background: #f1f5f9;
     padding: 15px 20px;
     font-weight: 600;
-    color: var(--ucc-text-muted);
-    border-bottom: 1px solid var(--ucc-border);
+    color: var(--cld-text-muted);
+    border-bottom: 1px solid var(--cld-border);
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
-.ucc-rule-item {
-    border-bottom: 1px solid var(--ucc-border);
+.cld-rule-item {
+    border-bottom: 1px solid var(--cld-border);
     transition: background 0.2s;
 }
 
-.ucc-rule-item:last-child {
+.cld-rule-item:last-child {
     border-bottom: none;
 }
 
-.ucc-rule-item:hover {
+.cld-rule-item:hover {
     background: #fbfcfe;
 }
 
-.ucc-rule-main {
+.cld-rule-main {
     display: flex;
     align-items: center;
     padding: 20px;
 }
 
 /* Column Widths */
-.ucc-col-status { width: 60px; text-align: center; }
-.ucc-col-url { flex: 1; min-width: 200px; padding: 0 10px; }
-.ucc-col-match { width: 130px; padding: 0 10px; }
-.ucc-col-location { width: 140px; padding: 0 10px; }
-.ucc-col-shortcode { width: 220px; padding: 0 10px; }
-.ucc-col-expiry { width: 150px; padding: 0 10px; }
-.ucc-col-actions { width: 90px; display: flex; justify-content: flex-end; gap: 8px; }
+.cld-col-drag { width: 30px; cursor: move; color: #ccc; }
+.cld-col-status { width: 60px; text-align: center; }
+.cld-col-url { flex: 1; min-width: 200px; padding: 0 10px; }
+.cld-col-match { width: 130px; padding: 0 10px; }
+.cld-col-location { width: 140px; padding: 0 10px; }
+.cld-col-shortcode { width: 220px; padding: 0 10px; }
+.cld-col-expiry { width: 150px; padding: 0 10px; }
+.cld-col-actions { width: 90px; display: flex; justify-content: flex-end; gap: 8px; }
 
-.ucc-shortcode-display {
+.cld-shortcode-display {
     width: 100%;
     background: #f1f5f9 !important;
     border: 1px dashed #cbd5e1 !important;
     font-family: monospace;
     font-size: 11px !important;
-    color: var(--ucc-text-muted);
+    color: var(--cld-text-muted);
     cursor: copy;
     padding: 8px 10px !important;
     text-align: center;
 }
 
 /* Form Elements */
-.ucc-rule-main input[type="text"],
-.ucc-rule-main input[type="date"],
-.ucc-rule-main select {
+.cld-rule-main input[type="text"],
+.cld-rule-main input[type="date"],
+.cld-rule-main select {
     width: 100%;
-    border: 1px solid var(--ucc-border);
+    border: 1px solid var(--cld-border);
     border-radius: 8px;
     padding: 8px 12px;
     background: #fff;
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.ucc-rule-main input[type="text"]:focus,
-.ucc-rule-main input[type="date"]:focus,
-.ucc-rule-main select:focus {
-    border-color: var(--ucc-primary);
+.cld-rule-main input[type="text"]:focus,
+.cld-rule-main input[type="date"]:focus,
+.cld-rule-main select:focus {
+    border-color: var(--cld-primary);
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
     outline: none;
 }
 
 /* Switch UI */
-.ucc-switch {
+.cld-switch {
     position: relative;
     display: inline-block;
     width: 44px;
     height: 24px;
 }
 
-.ucc-switch input { opacity: 0; width: 0; height: 0; }
+.cld-switch input { opacity: 0; width: 0; height: 0; }
 
-.ucc-slider {
+.cld-slider {
     position: absolute;
     cursor: pointer;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -146,7 +147,7 @@
     border-radius: 24px;
 }
 
-.ucc-slider:before {
+.cld-slider:before {
     position: absolute;
     content: "";
     height: 18px; width: 18px;
@@ -156,37 +157,37 @@
     border-radius: 50%;
 }
 
-input:checked + .ucc-slider { background-color: var(--ucc-primary); }
-input:checked + .ucc-slider:before { transform: translateX(20px); }
+input:checked + .cld-slider { background-color: var(--cld-primary); }
+input:checked + .cld-slider:before { transform: translateX(20px); }
 
 /* Buttons */
-.ucc-toggle-html, .ucc-remove-rule {
+.cld-toggle-html, .cld-remove-rule {
     background: none;
-    border: 1px solid var(--ucc-border);
+    border: 1px solid var(--cld-border);
     padding: 6px;
     border-radius: 6px;
     cursor: pointer;
-    color: var(--ucc-text-muted);
+    color: var(--cld-text-muted);
     transition: all 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.ucc-toggle-html:hover { color: var(--ucc-primary); border-color: var(--ucc-primary); background: #eff6ff; }
-.ucc-remove-rule:hover { color: #ef4444; border-color: #fca5a5; background: #fef2f2; }
+.cld-toggle-html:hover { color: var(--cld-primary); border-color: var(--cld-primary); background: #eff6ff; }
+.cld-remove-rule:hover { color: #ef4444; border-color: #fca5a5; background: #fef2f2; }
 
 /* HTML Textarea Area */
-.ucc-rule-html {
+.cld-rule-html {
     display: none;
     padding: 0 20px 20px;
 }
 
-.ucc-rule-html.active {
+.cld-rule-html.active {
     display: block;
 }
 
-.ucc-rule-html textarea {
+.cld-rule-html textarea {
     width: 100%;
     height: 200px;
     font-family: 'Courier New', Courier, monospace;
@@ -200,20 +201,20 @@ input:checked + .ucc-slider:before { transform: translateX(20px); }
 }
 
 /* Utilities */
-.ucc-no-rules {
+.cld-no-rules {
     padding: 40px;
     text-align: center;
-    color: var(--ucc-text-muted);
+    color: var(--cld-text-muted);
 }
 
-.ucc-submit-area {
+.cld-submit-area {
     display: flex;
     justify-content: flex-end;
 }
 
-.ucc-submit-area .button-primary {
-    background: var(--ucc-primary) !important;
-    border-color: var(--ucc-primary) !important;
+.cld-submit-area .button-primary {
+    background: var(--cld-primary) !important;
+    border-color: var(--cld-primary) !important;
     padding: 0 30px !important;
     height: 48px !important;
     line-height: 48px !important;
@@ -223,6 +224,6 @@ input:checked + .ucc-slider:before { transform: translateX(20px); }
     box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3) !important;
 }
 
-.ucc-submit-area .button-primary:hover {
-    background: var(--ucc-primary-hover) !important;
+.cld-submit-area .button-primary:hover {
+    background: var(--cld-primary-hover) !important;
 }

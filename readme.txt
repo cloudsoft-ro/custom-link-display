@@ -3,7 +3,7 @@ Contributors: constantinonu
 Tags: html injector, url parameters, tracking code, header footer, conditional content
 Requires at least: 5.0
 Tested up to: 6.9
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,6 +44,12 @@ Yes! Just paste the full URL or the part of the URL containing the parameters in
 Yes! We support Exact Match, "Contains" logic, and **Full Perl-Compatible Regular Expressions (PCRE)**.
 
 == Changelog ==
+
+= 1.2.0 =
+* Major Refactor: Renamed all internal namespaces, constants, and classes to CLD (Custom Link Display) for better consistency and conflict prevention.
+* Standardized text domains for full translation support.
+* Modernized the Admin UI styles with refined design tokens.
+* Added support for `[cld_content]` shortcode (retaining `[ucc_content]` for backward compatibility).
 
 = 1.1.0 =
 * Renamed plugin to Custom Link Display.
