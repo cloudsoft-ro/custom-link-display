@@ -34,6 +34,7 @@ if (!defined('ABSPATH')) {
 
         <div class="ucc-rules-container">
             <div class="ucc-rules-header">
+                <div class="ucc-col-drag"></div>
                 <div class="ucc-col-status">
                     <?php esc_html_e('Status', 'url-conditional-content'); ?>
                 </div>
@@ -45,6 +46,9 @@ if (!defined('ABSPATH')) {
                 </div>
                 <div class="ucc-col-location">
                     <?php esc_html_e('Placement', 'url-conditional-content'); ?>
+                </div>
+                <div class="ucc-col-shortcode">
+                    <?php esc_html_e('Shortcode', 'url-conditional-content'); ?>
                 </div>
                 <div class="ucc-col-expiry">
                     <?php esc_html_e('Expires', 'url-conditional-content'); ?>
@@ -59,6 +63,9 @@ if (!defined('ABSPATH')) {
                 <?php foreach ($rules as $index => $rule): ?>
                 <div class="ucc-rule-item" data-index="<?php echo esc_attr($index); ?>">
                     <div class="ucc-rule-main">
+                        <div class="ucc-col-drag">
+                            <span class="dashicons dashicons-move"></span>
+                        </div>
                         <div class="ucc-col-status">
                             <label class="ucc-switch">
                                 <input type="checkbox" name="rules[<?php echo esc_attr($index); ?>][active]" <?php
@@ -78,6 +85,9 @@ if (!defined('ABSPATH')) {
                                 <option value="contains" <?php selected('contains' , $rule['match_type']); ?>>
                                     <?php esc_html_e('Contains', 'url-conditional-content'); ?>
                                 </option>
+                                <option value="regex" <?php selected('regex', $rule['match_type']); ?>>
+                                    <?php esc_html_e('Regex Match', 'url-conditional-content'); ?>
+                                </option>
                             </select>
                         </div>
                         <div class="ucc-col-location">
@@ -92,10 +102,16 @@ if (!defined('ABSPATH')) {
                                     ?>>
                                     <?php esc_html_e('Before Content', 'url-conditional-content'); ?>
                                 </option>
-                                <option value="after_content" <?php selected('after_content' , $rule['location']); ?>>
+                                <option value="after_content" <?php selected('after_content', $rule['location']); ?>>
                                     <?php esc_html_e('After Content', 'url-conditional-content'); ?>
                                 </option>
+                                <option value="shortcode" <?php selected('shortcode', $rule['location']); ?>>
+                                    <?php esc_html_e('Shortcode Only', 'url-conditional-content'); ?>
+                                </option>
                             </select>
+                        </div>
+                        <div class="ucc-col-shortcode">
+                            <input type="text" class="ucc-shortcode-display" value='[ucc_content id="<?php echo esc_attr($rule['id']); ?>"]' readonly onclick="this.select();">
                         </div>
                         <div class="ucc-col-expiry">
                             <input type="date" name="rules[<?php echo esc_attr($index); ?>][expiry_date]"
@@ -140,6 +156,9 @@ endif; ?>
 <script type="text/template" id="ucc-rule-template">
     <div class="ucc-rule-item" data-index="{{index}}">
         <div class="ucc-rule-main">
+            <div class="ucc-col-drag">
+                <span class="dashicons dashicons-move"></span>
+            </div>
             <div class="ucc-col-status">
                 <label class="ucc-switch">
                     <input type="checkbox" name="rules[{{index}}][active]" checked>
@@ -153,6 +172,7 @@ endif; ?>
                 <select name="rules[{{index}}][match_type]">
                     <option value="exact"><?php esc_html_e('Exact Match', 'url-conditional-content'); ?></option>
                     <option value="contains"><?php esc_html_e('Contains', 'url-conditional-content'); ?></option>
+                    <option value="regex"><?php esc_html_e('Regex Match', 'url-conditional-content'); ?></option>
                 </select>
             </div>
             <div class="ucc-col-location">
@@ -161,7 +181,11 @@ endif; ?>
                     <option value="footer"><?php esc_html_e('Footer', 'url-conditional-content'); ?></option>
                     <option value="before_content"><?php esc_html_e('Before Content', 'url-conditional-content'); ?></option>
                     <option value="after_content"><?php esc_html_e('After Content', 'url-conditional-content'); ?></option>
+                    <option value="shortcode"><?php esc_html_e('Shortcode Only', 'url-conditional-content'); ?></option>
                 </select>
+            </div>
+            <div class="ucc-col-shortcode">
+                <input type="text" class="ucc-shortcode-display" value='[ucc_content id="{{id}}"]' readonly>
             </div>
             <div class="ucc-col-expiry">
                 <input type="date" name="rules[{{index}}][expiry_date]" value="">

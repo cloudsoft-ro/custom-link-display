@@ -5,13 +5,20 @@
     'use strict';
 
     $(document).ready(function() {
-        var $rulesList = $('#ucc-rules-list');
-        var $template = $('#ucc-rule-template').html();
+        // Initialize Sortable
+        $rulesList.sortable({
+            handle: '.ucc-col-drag',
+            axis: 'y',
+            update: function() {
+                reindexRules();
+            }
+        });
 
         // Add Rule
         $('#ucc-add-rule').on('click', function() {
             var index = $rulesList.find('.ucc-rule-item').length;
-            var html = $template.replace(/{{index}}/g, index);
+            var uniqueId = 'ucc_' + Math.random().toString(36).substr(2, 9);
+            var html = $template.replace(/{{index}}/g, index).replace(/{{id}}/g, uniqueId);
             
             // Remove "No rules" message if it exists
             $('.ucc-no-rules').remove();
@@ -22,6 +29,19 @@
             $('html, body').animate({
                 scrollTop: $rulesList.find('.ucc-rule-item').last().offset().top - 100
             }, 500);
+        });
+
+        // Copy Shortcode
+        $rulesList.on('click', '.ucc-shortcode-display', function() {
+            $(this).select();
+            document.execCommand('copy');
+            
+            var $this = $(this);
+            var originalValue = $this.val();
+            $this.val('Copied!');
+            setTimeout(function() {
+                $this.val(originalValue);
+            }, 1000);
         });
 
         // Remove Rule

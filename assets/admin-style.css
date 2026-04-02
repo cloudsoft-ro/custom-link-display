@@ -88,11 +88,24 @@
 
 /* Column Widths */
 .ucc-col-status { width: 60px; text-align: center; }
-.ucc-col-url { flex: 1; padding: 0 10px; }
+.ucc-col-url { flex: 1; min-width: 200px; padding: 0 10px; }
 .ucc-col-match { width: 130px; padding: 0 10px; }
 .ucc-col-location { width: 140px; padding: 0 10px; }
+.ucc-col-shortcode { width: 220px; padding: 0 10px; }
 .ucc-col-expiry { width: 150px; padding: 0 10px; }
 .ucc-col-actions { width: 90px; display: flex; justify-content: flex-end; gap: 8px; }
+
+.ucc-shortcode-display {
+    width: 100%;
+    background: #f1f5f9 !important;
+    border: 1px dashed #cbd5e1 !important;
+    font-family: monospace;
+    font-size: 11px !important;
+    color: var(--ucc-text-muted);
+    cursor: copy;
+    padding: 8px 10px !important;
+    text-align: center;
+}
 
 /* Form Elements */
 .ucc-rule-main input[type="text"],

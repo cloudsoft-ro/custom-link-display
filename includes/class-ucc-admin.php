@@ -27,7 +27,7 @@ class UCC_Admin
             return;
         }
 
-        wp_enqueue_script('ucc-admin-js', UCC_URL . 'assets/admin-script.js', ['jquery'], UCC_VERSION, true);
+        wp_enqueue_script('ucc-admin-js', UCC_URL . 'assets/admin-script.js', ['jquery', 'jquery-ui-sortable'], UCC_VERSION, true);
 
         wp_localize_script('ucc-admin-js', 'uccData', [
             'ajaxUrl' => admin_url('admin-ajax.php'),
@@ -78,15 +78,17 @@ class UCC_Admin
                 }
 
                 $url = !empty($rule['url']) ? $rule['url'] : '';
-                if (!empty($url)) {
+                $match_type = !empty($rule['match_type']) ? sanitize_text_field($rule['match_type']) : 'exact';
+
+                if ($match_type !== 'regex' && !empty($url)) {
                     $parsed_url = wp_parse_url($url);
                     $url = (isset($parsed_url['path']) ? $parsed_url['path'] : '') . (isset($parsed_url['query']) ? '?' . $parsed_url['query'] : '');
                 }
 
                 $sanitized_rules[] = [
                     'id'          => !empty($rule['id']) ? sanitize_text_field($rule['id']) : uniqid('ucc_'),
-                    'url'         => esc_url_raw($url),
-                    'match_type'  => sanitize_text_field($rule['match_type']),
+                    'url'         => $match_type === 'regex' ? $url : esc_url_raw($url),
+                    'match_type'  => $match_type,
                     'location'    => sanitize_text_field($rule['location']),
                     'html'        => $rule['html'], // Kept for custom injection, handled on output.
                     'active'      => isset($rule['active']) ? 1 : 0,

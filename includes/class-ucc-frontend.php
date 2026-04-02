@@ -17,6 +17,7 @@ class UCC_Frontend
     public function __construct()
     {
         add_action('template_redirect', [$this, 'detect_matching_rules']);
+        add_shortcode('ucc_content', [$this, 'render_shortcode']);
     }
 
     public function detect_matching_rules()
@@ -62,6 +63,12 @@ class UCC_Frontend
             }
             elseif ($match_type === 'contains') {
                 if (strpos($current_full_url, (string)$target_url) !== false || strpos($request_uri, (string)$target_url) !== false) {
+                    $match = true;
+                }
+            }
+            elseif ($match_type === 'regex') {
+                // Use @ to suppress errors if the user provides an invalid regex
+                if (@preg_match($target_url, $current_full_url) || @preg_match($target_url, $request_uri)) {
                     $match = true;
                 }
             }
@@ -126,18 +133,44 @@ class UCC_Frontend
     }
 
     /**
+     * Handle the [ucc_content id="..."] shortcode.
+     */
+    public function render_shortcode($atts)
+    {
+        $atts = shortcode_atts([
+            'id' => '',
+        ], $atts, 'ucc_content');
+
+        if (empty($atts['id'])) {
+            return '';
+        }
+
+        $rules = get_option('ucc_rules', []);
+        foreach ($rules as $rule) {
+            if ($rule['id'] === $atts['id'] && !empty($rule['active'])) {
+                // Check expiration
+                if (!empty($rule['expiry_date'])) {
+                    $expiry_date = strtotime($rule['expiry_date']);
+                    $current_date = strtotime(current_time('Y-m-d'));
+                    if ($expiry_date < $current_date) {
+                        return '';
+                    }
+                }
+                return $this->sanitize_injected_html($rule['html']);
+            }
+        }
+
+        return '';
+    }
+
+    /**
      * Sanitize custom HTML while preserving scripts and styles if needed.
-     * 
-     * @param string $html The raw HTML.
-     * @return string Sanitized HTML.
      */
     private function sanitize_injected_html($html)
     {
         if (empty($html)) {
             return '';
         }
-        // In a production plugin for WP.org, you might use wp_kses with a very broad allowed list,
-        // or if you really need scripts (common for this use case), you must warn the user.
         return $html;
     }
 }
