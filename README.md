@@ -1,4 +1,4 @@
-# Custom Link Display for WordPress
+# Custom Link Display Plugin for WordPress
 
 **Custom Link Display** is a flexible and lightweight WordPress plugin that lets you selectively inject custom HTML snippets or dynamically configured links onto specific pages, precisely based on their URLs or URL query parameters.
 
