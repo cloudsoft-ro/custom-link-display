@@ -3,7 +3,7 @@ Contributors: constantinonu
 Tags: html injector, url parameters, tracking code, header footer, conditional content
 Requires at least: 5.0
 Tested up to: 6.9
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,7 +45,7 @@ Yes! We support Exact Match, "Contains" logic, and **Full Perl-Compatible Regula
 
 == Changelog ==
 
-= 1.3.0 =
+= 1.4.0 =
 * Feature: Consolidated the Custom HTML and Link configuration interfaces into a mutually exclusive "Content Type" selector, simplifying rule creation.
 
 = 1.2.0 =

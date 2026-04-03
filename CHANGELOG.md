@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.3.0] - 2026-04-03
+## [1.4.0] - 2026-04-03
 ### Changed
 - **Admin UI**: Consolidated Custom HTML and Link Configurator interfaces into a single mutually exclusive content type selector.
 
