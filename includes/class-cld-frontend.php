@@ -28,7 +28,10 @@ class CLD_Frontend
             return;
         }
 
-        $rules = get_option('cld_rules', []);
+        $rules = get_option('cld_rules');
+        if (empty($rules)) {
+            $rules = get_option('ucc_rules', []);
+        }
         if (empty($rules)) {
             return;
         }
@@ -147,7 +150,10 @@ class CLD_Frontend
             return '';
         }
 
-        $rules = get_option('cld_rules', []);
+        $rules = get_option('cld_rules');
+        if (empty($rules)) {
+            $rules = get_option('ucc_rules', []);
+        }
         foreach ($rules as $rule) {
             if ($rule['id'] === $atts['id'] && !empty($rule['active'])) {
                 // Check expiration
