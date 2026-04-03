@@ -26,14 +26,39 @@ Whether you need to add a specific tracking pixel to a thank-you page with query
 
 == Installation ==
 
-1. Upload the plugin folder to the `/wp-content/plugins/` directory, or install the plugin through the WordPress plugins screen directly.
-2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. Use the **URL Content** menu in the admin dashboard to start creating rules.
+= Option 1: WordPress Dashboard =
+1. Go to **Plugins > Add New** in your WordPress admin dashboard.
+2. Click **Upload Plugin** at the top of the screen.
+3. Choose the `custom-link-display.zip` file and click **Install Now**.
+4. Click **Activate Plugin** once the installation is complete.
 
-== Screenshots ==
+= Option 2: Manual FTP Upload =
+1. Download and extract the `custom-link-display.zip` archive.
+2. Upload the unzipped `custom-link-display` folder to your website's `/wp-content/plugins/` directory.
+3. Log into your WordPress dashboard, navigate to the **Plugins** screen, and click **Activate** under "Custom Link Display".
 
-1. The main dashboard showing the rule manager.
-2. Adding a new rule with custom HTML.
+== Usage Guide ==
+
+Once activated, you will find a new menu item called **URL Content** in your WordPress admin sidebar. 
+
+= Creating a New Rule =
+1. Click the **"Add New Rule"** button. This will append a new configuration block.
+2. Toggle the **Status** to activate the rule.
+3. Fill in the **Target URL / Path**. You can use a full URL or just a local path like `/contact-us/`.
+4. Choose the **Match Type** (Exact Match, Contains, Regex Match).
+5. Select a **Placement** (Header, Footer, Before Content, After Content, or Shortcode Only).
+6. Pick an **Expiry Date** if the content is time-sensitive (optional).
+
+= Content Types =
+By clicking the **Edit Content** button (the pencil icon) in the Actions column, you can define exactly what gets injected. You can toggle between two modes using the radio buttons above the text area:
+*   **Custom HTML:** Provides a raw text area where you can inject fully formatted `<script>`, `<style>`, `<div>`, or pixel codes perfectly tailored to this condition.
+*   **Link Configurator:** Gives you visual inputs for **Anchor Text, URL, Title, Target, and Rel arguments**. The plugin will automatically compile a clean, SEO-friendly HTML link and output it.
+
+= Shortcode Integration =
+Every rule automatically generates a unique tracking shortcode. 
+1. To manually output the content with page builders, set the rule's placement to **Shortcode Only**.
+2. Click the shortcode string in the dashboard (e.g. `[cld_content id="cld_12345"]`) — it will auto-copy to your clipboard.
+3. Paste the shortcode anywhere on your site.
 
 == Frequently Asked Questions ==
 
