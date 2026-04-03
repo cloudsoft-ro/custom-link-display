@@ -3,7 +3,7 @@ Contributors: constantinonu
 Tags: html injector, url parameters, tracking code, header footer, conditional content
 Requires at least: 5.0
 Tested up to: 6.9
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -74,6 +74,9 @@ Yes! Just paste the full URL or the part of the URL containing the parameters in
 Yes! We support Exact Match, "Contains" logic, and **Full Perl-Compatible Regular Expressions (PCRE)**.
 
 == Changelog ==
+
+= 1.4.1 =
+* Added dashboard screenshots to documentation and readme.
 
 = 1.4.0 =
 * Feature: Consolidated the Custom HTML and Link configuration interfaces into a mutually exclusive "Content Type" selector, simplifying rule creation.

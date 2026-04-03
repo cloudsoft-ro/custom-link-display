@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.1] - 2026-04-03
+
+### Added
+- Dashboard screenshots added to plugin assets and documentation.
+
 ## [1.4.0] - 2026-04-03
 ### Changed
 - **Admin UI**: Consolidated Custom HTML and Link Configurator interfaces into a single mutually exclusive content type selector.
