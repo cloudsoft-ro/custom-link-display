@@ -120,7 +120,7 @@ if (!defined('ABSPATH')) {
                         <div class="cld-col-actions">
                             <button type="button" class="cld-toggle-html"
                                 title="<?php esc_attr_e('Edit HTML', 'custom-link-display'); ?>"><span
-                                    class="dashicons dashicons-code-standards"></span></button>
+                                    class="dashicons dashicons-editor-code"></span></button>
                             <button type="button" class="cld-remove-rule"
                                 title="<?php esc_attr_e('Remove Rule', 'custom-link-display'); ?>"><span
                                     class="dashicons dashicons-trash"></span></button>
@@ -191,7 +191,7 @@ endif; ?>
                 <input type="date" name="rules[{{index}}][expiry_date]" value="">
             </div>
             <div class="cld-col-actions">
-                <button type="button" class="cld-toggle-html" title="<?php esc_attr_e('Edit HTML', 'custom-link-display'); ?>"><span class="dashicons dashicons-code-standards"></span></button>
+                <button type="button" class="cld-toggle-html" title="<?php esc_attr_e('Edit HTML', 'custom-link-display'); ?>"><span class="dashicons dashicons-editor-code"></span></button>
                 <button type="button" class="cld-remove-rule" title="<?php esc_attr_e('Remove Rule', 'custom-link-display'); ?>"><span class="dashicons dashicons-trash"></span></button>
             </div>
         </div>
