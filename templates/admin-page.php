@@ -118,6 +118,9 @@ if (!defined('ABSPATH')) {
                                 value="<?php echo !empty($rule['expiry_date']) ? esc_attr($rule['expiry_date']) : ''; ?>">
                         </div>
                         <div class="cld-col-actions">
+                            <button type="button" class="cld-toggle-link"
+                                title="<?php esc_attr_e('Edit Link', 'custom-link-display'); ?>"><span
+                                    class="dashicons dashicons-admin-links"></span></button>
                             <button type="button" class="cld-toggle-html"
                                 title="<?php esc_attr_e('Edit HTML', 'custom-link-display'); ?>"><span
                                     class="dashicons dashicons-editor-code"></span></button>
@@ -128,7 +131,47 @@ if (!defined('ABSPATH')) {
                     </div>
                     <div class="cld-rule-html">
                         <textarea name="rules[<?php echo esc_attr($index); ?>][html]"
-                            placeholder="<?php esc_attr_e('Paste your custom HTML here...', 'custom-link-display'); ?>"><?php echo esc_textarea($rule['html']); ?></textarea>
+                            placeholder="<?php esc_attr_e('Paste your custom HTML here...', 'custom-link-display'); ?>"><?php echo esc_textarea($rule['html'] ?? ''); ?></textarea>
+                    </div>
+                    <div class="cld-rule-link-config">
+                        <div class="cld-link-fields-grid">
+                            <div class="cld-link-field cld-link-field-active">
+                                <label><?php esc_html_e('Link Active (Inactiv/Activ)', 'custom-link-display'); ?></label>
+                                <label class="cld-switch">
+                                    <input type="checkbox" name="rules[<?php echo esc_attr($index); ?>][link_active]" <?php checked(true, !empty($rule['link_active'])); ?>>
+                                    <span class="cld-slider round"></span>
+                                </label>
+                            </div>
+                            <div class="cld-link-field">
+                                <label><?php esc_html_e('Anchor Text', 'custom-link-display'); ?></label>
+                                <input type="text" name="rules[<?php echo esc_attr($index); ?>][link_anchor]" value="<?php echo esc_attr($rule['link_anchor'] ?? ''); ?>" placeholder="<?php esc_attr_e('Click Here', 'custom-link-display'); ?>">
+                            </div>
+                            <div class="cld-link-field">
+                                <label><?php esc_html_e('URL', 'custom-link-display'); ?></label>
+                                <input type="text" name="rules[<?php echo esc_attr($index); ?>][link_url]" value="<?php echo esc_url($rule['link_url'] ?? ''); ?>" placeholder="https://...">
+                            </div>
+                            <div class="cld-link-field">
+                                <label><?php esc_html_e('Title', 'custom-link-display'); ?></label>
+                                <input type="text" name="rules[<?php echo esc_attr($index); ?>][link_title]" value="<?php echo esc_attr($rule['link_title'] ?? ''); ?>" placeholder="<?php esc_attr_e('Link Title', 'custom-link-display'); ?>">
+                            </div>
+                            <div class="cld-link-field">
+                                <label><?php esc_html_e('Target', 'custom-link-display'); ?></label>
+                                <select name="rules[<?php echo esc_attr($index); ?>][link_target]">
+                                    <option value="_self" <?php selected('_self', $rule['link_target'] ?? ''); ?>><?php esc_html_e('Same Window (_self)', 'custom-link-display'); ?></option>
+                                    <option value="_blank" <?php selected('_blank', $rule['link_target'] ?? ''); ?>><?php esc_html_e('New Window (_blank)', 'custom-link-display'); ?></option>
+                                </select>
+                            </div>
+                            <div class="cld-link-field">
+                                <label><?php esc_html_e('Rel Attribute', 'custom-link-display'); ?></label>
+                                <select name="rules[<?php echo esc_attr($index); ?>][link_rel]">
+                                    <option value="" <?php selected('', $rule['link_rel'] ?? ''); ?>><?php esc_html_e('None (Dofollow)', 'custom-link-display'); ?></option>
+                                    <option value="nofollow" <?php selected('nofollow', $rule['link_rel'] ?? ''); ?>>nofollow</option>
+                                    <option value="sponsored" <?php selected('sponsored', $rule['link_rel'] ?? ''); ?>>sponsored</option>
+                                    <option value="ugc" <?php selected('ugc', $rule['link_rel'] ?? ''); ?>>ugc</option>
+                                    <option value="noopener noreferrer" <?php selected('noopener noreferrer', $rule['link_rel'] ?? ''); ?>>noopener noreferrer</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <input type="hidden" name="rules[<?php echo esc_attr($index); ?>][id]"
                         value="<?php echo esc_attr($rule['id']); ?>">
@@ -191,12 +234,53 @@ endif; ?>
                 <input type="date" name="rules[{{index}}][expiry_date]" value="">
             </div>
             <div class="cld-col-actions">
+                <button type="button" class="cld-toggle-link" title="<?php esc_attr_e('Edit Link', 'custom-link-display'); ?>"><span class="dashicons dashicons-admin-links"></span></button>
                 <button type="button" class="cld-toggle-html" title="<?php esc_attr_e('Edit HTML', 'custom-link-display'); ?>"><span class="dashicons dashicons-editor-code"></span></button>
                 <button type="button" class="cld-remove-rule" title="<?php esc_attr_e('Remove Rule', 'custom-link-display'); ?>"><span class="dashicons dashicons-trash"></span></button>
             </div>
         </div>
         <div class="cld-rule-html">
             <textarea name="rules[{{index}}][html]" placeholder="<?php esc_attr_e('Paste your custom HTML here...', 'custom-link-display'); ?>"></textarea>
+        </div>
+        <div class="cld-rule-link-config">
+            <div class="cld-link-fields-grid">
+                <div class="cld-link-field cld-link-field-active">
+                    <label><?php esc_html_e('Link Active (Inactiv/Activ)', 'custom-link-display'); ?></label>
+                    <label class="cld-switch">
+                        <input type="checkbox" name="rules[{{index}}][link_active]">
+                        <span class="cld-slider round"></span>
+                    </label>
+                </div>
+                <div class="cld-link-field">
+                    <label><?php esc_html_e('Anchor Text', 'custom-link-display'); ?></label>
+                    <input type="text" name="rules[{{index}}][link_anchor]" value="" placeholder="<?php esc_attr_e('Click Here', 'custom-link-display'); ?>">
+                </div>
+                <div class="cld-link-field">
+                    <label><?php esc_html_e('URL', 'custom-link-display'); ?></label>
+                    <input type="text" name="rules[{{index}}][link_url]" value="" placeholder="https://...">
+                </div>
+                <div class="cld-link-field">
+                    <label><?php esc_html_e('Title', 'custom-link-display'); ?></label>
+                    <input type="text" name="rules[{{index}}][link_title]" value="" placeholder="<?php esc_attr_e('Link Title', 'custom-link-display'); ?>">
+                </div>
+                <div class="cld-link-field">
+                    <label><?php esc_html_e('Target', 'custom-link-display'); ?></label>
+                    <select name="rules[{{index}}][link_target]">
+                        <option value="_self"><?php esc_html_e('Same Window (_self)', 'custom-link-display'); ?></option>
+                        <option value="_blank"><?php esc_html_e('New Window (_blank)', 'custom-link-display'); ?></option>
+                    </select>
+                </div>
+                <div class="cld-link-field">
+                    <label><?php esc_html_e('Rel Attribute', 'custom-link-display'); ?></label>
+                    <select name="rules[{{index}}][link_rel]">
+                        <option value=""><?php esc_html_e('None (Dofollow)', 'custom-link-display'); ?></option>
+                        <option value="nofollow">nofollow</option>
+                        <option value="sponsored">sponsored</option>
+                        <option value="ugc">ugc</option>
+                        <option value="noopener noreferrer">noopener noreferrer</option>
+                    </select>
+                </div>
+            </div>
         </div>
         <input type="hidden" name="rules[{{index}}][id]" value="">
     </div>

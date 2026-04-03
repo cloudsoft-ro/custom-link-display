@@ -90,9 +90,17 @@ class CLD_Admin
                     'url'         => $match_type === 'regex' ? $url : esc_url_raw($url),
                     'match_type'  => $match_type,
                     'location'    => sanitize_text_field($rule['location']),
-                    'html'        => $rule['html'], // Kept for custom injection, handled on output.
+                    'html'        => $rule['html'] ?? '',
                     'active'      => isset($rule['active']) ? 1 : 0,
                     'expiry_date' => !empty($rule['expiry_date']) ? sanitize_text_field($rule['expiry_date']) : '',
+                    
+                    // Link variables
+                    'link_active' => isset($rule['link_active']) ? 1 : 0,
+                    'link_anchor' => isset($rule['link_anchor']) ? sanitize_text_field($rule['link_anchor']) : '',
+                    'link_url'    => isset($rule['link_url']) ? esc_url_raw($rule['link_url']) : '',
+                    'link_title'  => isset($rule['link_title']) ? sanitize_text_field($rule['link_title']) : '',
+                    'link_target' => isset($rule['link_target']) ? sanitize_text_field($rule['link_target']) : '_self',
+                    'link_rel'    => isset($rule['link_rel']) ? sanitize_text_field($rule['link_rel']) : '',
                 ];
             }
         }

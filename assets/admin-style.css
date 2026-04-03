@@ -177,13 +177,13 @@ input:checked + .cld-slider:before { transform: translateX(20px); }
 .cld-toggle-html:hover { color: var(--cld-primary); border-color: var(--cld-primary); background: #eff6ff; }
 .cld-remove-rule:hover { color: #ef4444; border-color: #fca5a5; background: #fef2f2; }
 
-/* HTML Textarea Area */
-.cld-rule-html {
+/* HTML & Link Toggle Areas */
+.cld-rule-html, .cld-rule-link-config {
     display: none;
     padding: 0 20px 20px;
 }
 
-.cld-rule-html.active {
+.cld-rule-html.active, .cld-rule-link-config.active {
     display: block;
 }
 
@@ -198,6 +198,52 @@ input:checked + .cld-slider:before { transform: translateX(20px); }
     padding: 15px;
     border: none;
     resize: vertical;
+}
+
+/* Link Configurator Grid */
+.cld-link-fields-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    background: #f8fafc;
+    border: 1px solid var(--cld-border);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.cld-link-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.cld-link-field label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: var(--cld-text);
+}
+
+.cld-link-field input[type="text"],
+.cld-link-field select {
+    width: 100%;
+    border: 1px solid var(--cld-border);
+    border-radius: 6px;
+    padding: 6px 10px;
+}
+
+.cld-link-field-active {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--cld-border);
+    margin-bottom: 5px;
+}
+
+.cld-link-field-active label:first-child {
+    margin-bottom: 0;
 }
 
 /* Utilities */

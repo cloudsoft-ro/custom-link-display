@@ -131,9 +131,35 @@ class CLD_Frontend
         $output = '';
         foreach ($this->active_rules as $rule) {
             if (isset($rule['location']) && $rule['location'] === $location) {
-                $output .= $rule['html'] . "\n";
+                $output .= $this->generate_rule_output($rule) . "\n";
             }
         }
+        return $output;
+    }
+
+    /**
+     * Helper to build the final output from a rule (link + custom HTML).
+     */
+    private function generate_rule_output($rule)
+    {
+        $output = '';
+
+        // If link configurator is active
+        if (!empty($rule['link_active'])) {
+            $url    = !empty($rule['link_url']) ? esc_url($rule['link_url']) : '#';
+            $anchor = !empty($rule['link_anchor']) ? esc_html($rule['link_anchor']) : '';
+            $title  = !empty($rule['link_title']) ? ' title="' . esc_attr($rule['link_title']) . '"' : '';
+            $target = !empty($rule['link_target']) && $rule['link_target'] === '_blank' ? ' target="_blank"' : '';
+            $rel    = !empty($rule['link_rel']) ? ' rel="' . esc_attr($rule['link_rel']) . '"' : '';
+
+            $output .= '<a href="' . $url . '"' . $title . $target . $rel . '>' . $anchor . '</a>';
+        }
+
+        // Add the custom HTML if any
+        if (!empty($rule['html'])) {
+            $output .= $rule['html'];
+        }
+
         return $output;
     }
 
@@ -164,7 +190,7 @@ class CLD_Frontend
                         return '';
                     }
                 }
-                return $this->sanitize_injected_html($rule['html']);
+                return $this->sanitize_injected_html($this->generate_rule_output($rule));
             }
         }
 

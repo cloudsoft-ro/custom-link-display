@@ -62,7 +62,19 @@
 
         // Toggle HTML Textarea
         $rulesList.on('click', '.cld-toggle-html', function() {
-            $(this).closest('.cld-rule-item').find('.cld-rule-html').toggleClass('active');
+            var $item = $(this).closest('.cld-rule-item');
+            $item.find('.cld-rule-html').toggleClass('active');
+            $item.find('.cld-rule-link-config').removeClass('active');
+            $item.find('.cld-toggle-link').removeClass('active');
+            $(this).toggleClass('active');
+        });
+
+        // Toggle Link Configurator
+        $rulesList.on('click', '.cld-toggle-link', function() {
+            var $item = $(this).closest('.cld-rule-item');
+            $item.find('.cld-rule-link-config').toggleClass('active');
+            $item.find('.cld-rule-html').removeClass('active');
+            $item.find('.cld-toggle-html').removeClass('active');
             $(this).toggleClass('active');
         });
 
