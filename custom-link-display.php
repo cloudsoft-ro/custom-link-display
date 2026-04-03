@@ -3,7 +3,7 @@
  * Plugin Name: Custom Link Display
  * Plugin URI:  https://www.onu.ro/
  * Description: Display custom HTML snippets conditionally based on specific URLs and query parameters.
- * Version:     1.2.1
+ * Version:     1.3.0
  * Author:      Constantin Onu
  * Author URI:  https://onu.ro
  * License:     GPLv2 or later
@@ -25,7 +25,7 @@ if (!defined('WPINC')) {
 /**
  * Currently plugin version.
  */
-define('CLD_VERSION', '1.2.1');
+define('CLD_VERSION', '1.3.0');
 
 /**
  * Path to the plugin directory.

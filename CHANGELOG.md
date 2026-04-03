@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2026-04-03
+### Changed
+- **Admin UI**: Consolidated Custom HTML and Link Configurator interfaces into a single mutually exclusive content type selector.
+
 ## [1.2.0] - 2026-04-02
 ### Changed
 - **Major Refactor**: Renamed all internal namespaces, constants, and classes to `CLD` (Custom Link Display) for better consistency and conflict prevention.

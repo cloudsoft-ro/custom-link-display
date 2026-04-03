@@ -144,8 +144,14 @@ class CLD_Frontend
     {
         $output = '';
 
-        // If link configurator is active
-        if (!empty($rule['link_active'])) {
+        $content_type = 'html';
+        if (isset($rule['content_type'])) {
+            $content_type = $rule['content_type'];
+        } elseif (!empty($rule['link_active'])) {
+            $content_type = 'link'; // Fallback for old rules
+        }
+
+        if ($content_type === 'link') {
             $url    = !empty($rule['link_url']) ? esc_url($rule['link_url']) : '#';
             $anchor = !empty($rule['link_anchor']) ? esc_html($rule['link_anchor']) : '';
             $title  = !empty($rule['link_title']) ? ' title="' . esc_attr($rule['link_title']) . '"' : '';
@@ -153,11 +159,11 @@ class CLD_Frontend
             $rel    = !empty($rule['link_rel']) ? ' rel="' . esc_attr($rule['link_rel']) . '"' : '';
 
             $output .= '<a href="' . $url . '"' . $title . $target . $rel . '>' . $anchor . '</a>';
-        }
-
-        // Add the custom HTML if any
-        if (!empty($rule['html'])) {
-            $output .= $rule['html'];
+        } else {
+            // Add the custom HTML if any
+            if (!empty($rule['html'])) {
+                $output .= $rule['html'];
+            }
         }
 
         return $output;

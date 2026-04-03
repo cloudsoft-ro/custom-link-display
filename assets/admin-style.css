@@ -178,13 +178,28 @@ input:checked + .cld-slider:before { transform: translateX(20px); }
 .cld-remove-rule:hover { color: #ef4444; border-color: #fca5a5; background: #fef2f2; }
 
 /* HTML & Link Toggle Areas */
-.cld-rule-html, .cld-rule-link-config {
+.cld-rule-configs {
     display: none;
     padding: 0 20px 20px;
 }
 
-.cld-rule-html.active, .cld-rule-link-config.active {
+.cld-rule-configs.active {
     display: block;
+}
+
+.cld-content-type-selector {
+    padding: 10px 0 15px;
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid var(--cld-border);
+    margin-bottom: 15px;
+}
+
+.cld-content-type-selector label {
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--cld-text);
 }
 
 .cld-rule-html textarea {

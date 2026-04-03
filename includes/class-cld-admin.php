@@ -93,9 +93,9 @@ class CLD_Admin
                     'html'        => $rule['html'] ?? '',
                     'active'      => isset($rule['active']) ? 1 : 0,
                     'expiry_date' => !empty($rule['expiry_date']) ? sanitize_text_field($rule['expiry_date']) : '',
+                    'content_type'=> !empty($rule['content_type']) && $rule['content_type'] === 'link' ? 'link' : 'html',
                     
                     // Link variables
-                    'link_active' => isset($rule['link_active']) ? 1 : 0,
                     'link_anchor' => isset($rule['link_anchor']) ? sanitize_text_field($rule['link_anchor']) : '',
                     'link_url'    => isset($rule['link_url']) ? esc_url_raw($rule['link_url']) : '',
                     'link_title'  => isset($rule['link_title']) ? sanitize_text_field($rule['link_title']) : '',

@@ -60,22 +60,23 @@
             }
         });
 
-        // Toggle HTML Textarea
-        $rulesList.on('click', '.cld-toggle-html', function() {
+        // Toggle Content Configs Area
+        $rulesList.on('click', '.cld-toggle-content', function() {
             var $item = $(this).closest('.cld-rule-item');
-            $item.find('.cld-rule-html').toggleClass('active');
-            $item.find('.cld-rule-link-config').removeClass('active');
-            $item.find('.cld-toggle-link').removeClass('active');
+            $item.find('.cld-rule-configs').toggleClass('active');
             $(this).toggleClass('active');
         });
 
-        // Toggle Link Configurator
-        $rulesList.on('click', '.cld-toggle-link', function() {
+        // Toggle Between HTML and Link configuration
+        $rulesList.on('change', '.cld-type-radio', function() {
             var $item = $(this).closest('.cld-rule-item');
-            $item.find('.cld-rule-link-config').toggleClass('active');
-            $item.find('.cld-rule-html').removeClass('active');
-            $item.find('.cld-toggle-html').removeClass('active');
-            $(this).toggleClass('active');
+            if ($(this).val() === 'html') {
+                $item.find('.cld-rule-html').show();
+                $item.find('.cld-rule-link-config').hide();
+            } else {
+                $item.find('.cld-rule-html').hide();
+                $item.find('.cld-rule-link-config').show();
+            }
         });
 
         /**
