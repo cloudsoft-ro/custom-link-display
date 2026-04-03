@@ -24,6 +24,11 @@ Whether you need to add a specific tracking pixel to a thank-you page with query
 *   **Premium Admin UI**: A beautiful, clean interface powered by the latest WordPress standards.
 *   **Lightweight & Fast**: No bloat, optimized for maximum performance.
 
+== Screenshots ==
+
+1. The main rule manager dashboard showing multiple conditional rules with Custom HTML mode active.
+2. The Link Configurator mode — a visual no-code interface for building SEO-friendly anchor links.
+
 == Installation ==
 
 = Option 1: WordPress Dashboard =

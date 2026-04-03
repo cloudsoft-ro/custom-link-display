@@ -13,6 +13,12 @@
 * **Visual Rule Ordering:** Simple drag-and-drop rule reordering ensures the correct cascade of priority.
 * **Premium Admin UI:** Minimalist, fast, and entirely built with a polished native look in the WordPress dashboard.
 
+## 📸 Screenshots
+
+| Custom HTML Mode | Link Configurator Mode |
+|---|---|
+| ![Custom HTML dashboard](assets/screenshots/screenshot-1.png) | ![Link Configurator dashboard](assets/screenshots/screenshot-2.png) |
+
 ## 🚀 Installation
 
 ### Option 1: WordPress Dashboard
