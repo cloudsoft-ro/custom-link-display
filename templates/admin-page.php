@@ -290,6 +290,6 @@ endif; ?>
                 </div>
             </div>
         </div>
-        <input type="hidden" name="rules[{{index}}][id]" value="">
+        <input type="hidden" name="rules[{{index}}][id]" value="{{id}}">
     </div>
 </script>

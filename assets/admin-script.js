@@ -49,14 +49,21 @@
             }, 1000);
         });
 
-        // Remove Rule
         $rulesList.on('click', '.cld-remove-rule', function() {
             if (confirm('Are you sure you want to remove this rule?')) {
-                $(this).closest('.cld-rule-item').fadeOut(300, function() {
+                var $item = $(this).closest('.cld-rule-item');
+                
+                // Mark for removal and hide immediately from indexing
+                $item.removeClass('cld-rule-item').fadeOut(300, function() {
                     $(this).remove();
-                    // Re-index remaining rules
-                    reindexRules();
+                    // Check if no rules left after final removal
+                    if ($rulesList.find('.cld-rule-item').length === 0 && $('.cld-no-rules').length === 0) {
+                         $rulesList.append('<p class="cld-no-rules">No rules defined yet. Click "Add New Rule" to get started.</p>');
+                    }
                 });
+                
+                // Re-index remaining rules immediately
+                reindexRules();
             }
         });
 

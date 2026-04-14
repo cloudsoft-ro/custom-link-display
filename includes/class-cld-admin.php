@@ -112,8 +112,8 @@ class CLD_Admin
 
     public function display_settings_page()
     {
-        $rules = get_option('cld_rules');
-        if (empty($rules)) {
+        $rules = get_option('cld_rules', null);
+        if ($rules === null) {
             $rules = get_option('ucc_rules', []);
         }
         require_once CLD_PATH . 'templates/admin-page.php';

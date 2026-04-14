@@ -2,10 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.4.1] - 2026-04-03
+## [1.4.2] - 2026-04-14
 
-### Added
-- Dashboard screenshots added to plugin assets and documentation.
+### Fixed
+- **Deletion Persistence**: Fixed an issue where deleted links would reappear after page refresh due to legacy fallback logic and JavaScript race conditions.
+- **Template ID**: Fixed missing ID placeholder in the new rule template.
+- **Activation Hook**: Fixed a bug where intentional data clearing would trigger an automatic re-import of legacy rules on plugin reactivation.
+
+## [1.4.1] - 2026-04-03
 
 ## [1.4.0] - 2026-04-03
 ### Changed
